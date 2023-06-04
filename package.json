@@ -25,8 +25,9 @@
   },
   "homepage": "https://github.com/ISeliukov/ajs-class#readme",
   "devDependencies": {
-    "babel": "^6.23.0",
-    "babel-cli": "^6.26.0",
+    "@babel/cli": "^7.21.5",
+    "@babel/core": "^7.22.1",
+    "@babel/preset-env": "^7.22.4",
     "babel-jest": "^29.5.0",
     "babel-loader": "^9.1.2",
     "babel-preset-env": "^1.7.0",
