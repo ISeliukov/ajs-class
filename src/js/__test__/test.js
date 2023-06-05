@@ -1,4 +1,4 @@
-import {health, sortHealth} from '../basic.js';
+import {health, sortHealth, Character} from '../basic.js';
 
 
 test("basic test", () => {
@@ -29,3 +29,34 @@ test("health sort test", () => {
     ]);
 });
 
+
+
+
+test("Character test", () => {
+    let result = new Character('Вася', 'Bowman');
+    expect(result.type).toBe('Bowman');
+    result = new Character('Вася', 'Swordsman');
+    expect(result.type).toBe('Swordsman');
+    result = new Character('Вася', 'Magician');
+    expect(result.type).toBe('Magician');
+    result = new Character('Вася', 'Daemon');
+    expect(result.type).toBe('Daemon');
+    result = new Character('Вася', 'Undead');
+    expect(result.type).toBe('Undead');
+    result = new Character('Вася', 'Zombie');
+    expect(result.type).toBe('Zombie');
+
+});
+
+test("Character fail test", () => {
+  let t = () => {
+    throw new Error('Name length is not correct');
+  }
+    let result = new Character('Ва', 'Bowman');
+    expect(t()).toThrow('Name length is not correct');
+  t = () => {
+    throw new Error('Type is not correct');
+  }
+    result = new Character('Вася', 'Swords');
+    expect(t()).toThrow('Type is not correct');
+});
