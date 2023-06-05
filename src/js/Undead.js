@@ -1,6 +1,6 @@
 import { Character } from './basic';
 
-class Undead extends Character {
+export default class Undead extends Character {
   constructor(...args) {
     super(...args);
     this.attack = 40;
@@ -8,6 +8,6 @@ class Undead extends Character {
   }
 }
 
-const obj = Undead('Вася', 'Undead');
+const obj = new Undead('Вася', 'Undead');
 
 console.log(obj);

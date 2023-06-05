@@ -1,4 +1,6 @@
 import {health, sortHealth, Character} from '../basic.js';
+import Bowman from '../Bowman.js';
+
 
 
 test("basic test", () => {
@@ -48,15 +50,33 @@ test("Character test", () => {
 
 });
 
-test("Character fail test", () => {
-  let t = () => {
-    throw new Error('Name length is not correct');
-  }
-    let result = new Character('Ва', 'Bowman');
-    expect(t()).toThrow('Name length is not correct');
-  t = () => {
-    throw new Error('Type is not correct');
-  }
-    result = new Character('Вася', 'Swords');
-    expect(t()).toThrow('Type is not correct');
+
+test('check Character error name', () => {
+  expect(() => {
+    const char = new Character('b', 'Character');
+  }).toThrowError('Name length is not correct');
+});
+
+test('check Character error type', () => {
+  expect(() => {
+    const char = new Character('abcd', 'Character');
+  }).toThrowError('Type is not correct');
+});
+
+test('check level up', () => {
+  const char = new Character('abcd', 'Bowman');
+  char.levelUp();
+  expect({level: char.level, health: char.health}).toEqual({level: 2, health: 100});
+  char.health = 0;
+  expect(() => {
+    char.levelUp();
+  }).toThrowError('Level up for dead is not allowed');
+});
+
+test("Character damage test", () => {
+    let result = new Bowman('Вася', 'Bowman');
+    result.damage(20);
+    expect(result.health).toBe(85);
+    result.damage(1000);
+    expect(result.health).toBe(0);
 });

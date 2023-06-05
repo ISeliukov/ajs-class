@@ -1,6 +1,6 @@
 import { Character } from './basic';
 
-class Bowman extends Character {
+export default class Bowman extends Character {
   constructor(...args) {
     super(...args);
     this.attack = 25;
@@ -8,6 +8,6 @@ class Bowman extends Character {
   }
 }
 
-const obj = Bowman('Вася', 'Bowman');
+const obj = new Bowman('Вася', 'Bowman');
 
 console.log(obj);
