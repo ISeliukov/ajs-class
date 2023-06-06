@@ -20,12 +20,14 @@ export function sortHealth(arr) {
   return arrsort;
 }
 
+const types = ['Bowman', 'Swordsman', 'Magician', 'Daemon', 'Undead', 'Zombie'];
+
 export class Character {
   constructor(name, type) {
     if ((name.trim().length < 2) || (name.trim().length > 10)) {
       throw new Error('Name length is not correct');
     }
-    if ((type !== 'Bowman') && (type !== 'Swordsman') && (type !== 'Magician') && (type !== 'Daemon') && (type !== 'Undead') && (type !== 'Zombie')) {
+    if (!types.includes(type)) {
       throw new Error('Type is not correct');
     }
     this.name = name;
